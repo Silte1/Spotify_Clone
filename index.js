@@ -1,40 +1,37 @@
+const searchBtn = document.querySelector('#searchBtn') ;
+const searchInput = document.querySelector('#searchBtn').value ;
 
-
-let apiModel = "https://api.deezer.com/version/service/id/method/?parameters"
-
-// Pagination parameters with index and limit
-
-let example = "https://api.deezer.com/playlist/4341978/tracks?index=0&limit=10"
-
-const axios = require("axios");
+const key = "f5334cafbcmshb1e8fe95374091bp145087jsn2964757736a3";
+const host = 'deezerdevs-deezer.p.rapidapi.com';
 
 const options = {
-  method: 'GET',
-  url: 'https://spotify23.p.rapidapi.com/search/',
-  params: {
-    q: '<REQUIRED>',
-    type: 'multi',
-    offset: '0',
-    limit: '10',
-    numberOfTopResults: '5'
-  },
-  headers: {
-    'X-RapidAPI-Key': 'f5334cafbcmshb1e8fe95374091bp145087jsn2964757736a3',
-    'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-  }
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': key,
+		'X-RapidAPI-Host': host
+	}
 };
 
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
-  console.log(options);
-
-  const myFunction = async () =>{
-    const response = await fetch("https://spotify23.p.rapidapi.com/search/")
+const fetchingFunction = async () => {
+  try {  
+    const response = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem`, options);
     const data = await response.json()
-    console.log(data);
+    console.log();
+    if(!response.ok){
+      throw new Error(`Error: ${response.status}` )
+    }
+  }
+  catch(error){
+    console.log(error.message);
   }
 
-  myFunction()
+
+}
+
+
+
+
+  search.addEventListener('click', (e)=>{
+    e.preventDefault
+    fetchingFunction()
+  }) 
