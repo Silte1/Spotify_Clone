@@ -22,6 +22,7 @@ async function getAlbums(artist) {
     `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`,
     options
   );
+
   const data = await response.json();
   console.log(data);
   // von /artist/id kriegen wir mit data.name den Namen
@@ -38,7 +39,7 @@ async function getAlbums(artist) {
     image.classList.add("card-img-top");
     title.classList.add("card-title", "text-center", "text-light");
     artistName.classList.add("card-text", "text-center", "text-light");
-    console.log(track.album.cover);
+
     image.src = track.album.cover;
     title.innerText = track.title;
     artistName.innerText = track.artist.name;
