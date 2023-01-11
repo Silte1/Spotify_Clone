@@ -1,5 +1,10 @@
-const searchBtn = document.querySelector('#searchBtn') ;
-const searchInput = document.querySelector('#searchBtn').value ;
+const searchBtn = document.querySelector('#addon-wrapping') ;
+const searchInput = document.querySelector('#searchInput').value,
+artistSection = document.querySelector('artist'),
+searchResult = document.querySelector('searchResult'),
+tractSection = document.querySelector('tract');
+
+
 
 const key = "f5334cafbcmshb1e8fe95374091bp145087jsn2964757736a3";
 const host = 'deezerdevs-deezer.p.rapidapi.com';
@@ -16,7 +21,7 @@ const fetchingFunction = async () => {
   try {  
     const response = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem`, options);
     const data = await response.json()
-    console.log();
+    console.log(data.data);
     if(!response.ok){
       throw new Error(`Error: ${response.status}` )
     }
@@ -31,7 +36,7 @@ const fetchingFunction = async () => {
 
 
 
-  search.addEventListener('click', (e)=>{
-    e.preventDefault
+searchBtn.addEventListener('click', (e)=>{
+    e.preventDefault()
     fetchingFunction()
   }) 
