@@ -25,4 +25,10 @@ li {
 }
 #artist-nav li:hover::before {
   display: block;
+}
+
+#artist-bottom #artist-bottom-albums #artist-albums-content .card {
+  background: none;
+  width: 15%;
+  border: none;
 }/*# sourceMappingURL=artist.css.map */
