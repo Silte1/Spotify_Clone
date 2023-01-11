@@ -1,0 +1,27 @@
+button,
+li {
+  font-size: 0.8rem;
+}
+
+#artist-nav {
+  li {
+    position: relative;
+
+    &::before {
+      content: " ";
+      position: absolute;
+      top: 110%;
+      left: 30%;
+      background-color: rgb(0, 124, 0);
+      width: 30px;
+      height: 2px;
+      display: none;
+    }
+    &:hover {
+      cursor: pointer;
+      &::before {
+        display: block;
+      }
+    }
+  }
+}
