@@ -19,7 +19,7 @@ const options = {
   },
 };
 // use the artist variable to change the artists page
-const artist = "irierevoltes";
+const artist = "ksbloom";
 
 // creates a message that artist has been added to list. STILL NEEDS TO ADD ARTIST TO SAID LIST
 function followArtist() {
