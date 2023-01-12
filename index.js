@@ -19,9 +19,9 @@ const options = {
 
 const fetchingFunction = async () => {
   try {  
-    const response = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem`, options);
+    const response = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search`, options);
     const data = await response.json()
-    console.log(data.data);
+    console.log(data);
     if(!response.ok){
       throw new Error(`Error: ${response.status}` )
     }
