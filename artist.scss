@@ -1,3 +1,7 @@
+body {
+  background: black;
+}
+
 button,
 li {
   font-size: 0.8rem;
@@ -7,6 +11,12 @@ li {
   #artist-buttons {
     #artist-follow {
       background: rgba(0, 0, 0, 0.58);
+      border: 1px solid white;
+      &:hover {
+        background: rgba(255, 255, 255, 0.58);
+        color: black;
+        border: 1px solid black;
+      }
     }
   }
 }
@@ -19,7 +29,7 @@ li {
       position: absolute;
       top: 110%;
       left: 30%;
-      background-color: rgb(0, 124, 0);
+      background-color: rgb(0, 228, 0);
       width: 30px;
       height: 2px;
       display: none;
@@ -34,13 +44,51 @@ li {
 }
 
 #artist-bottom {
+  position: relative;
+  box-shadow: 0px -5px 20px 1px black;
+
+  #artistAddPrompt {
+    transition: all 2s;
+  }
   #artist-bottom-albums {
     #artist-albums-content {
+      color: rgb(193, 193, 193);
       .card {
-        background: none;
+        background: rgba(17, 0, 17, 0.827);
         width: 15%;
         border: none;
+        min-width: 200px;
+        box-shadow: 1px 1px 3px 0px rgb(62, 62, 62);
       }
+    }
+  }
+  #artistAddMessage {
+    background-color: rgba(1, 57, 57, 0.769);
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(214, 211, 235);
+    transition: all 20s;
+    display: none;
+  }
+}
+
+//////// slider test
+.swiper {
+  padding: 10px;
+  background: none;
+
+  .swiper-slide {
+    width: 13%;
+    padding: 5px;
+    img {
+      width: 100%;
+    }
+    p {
+      font-size: 0.8rem;
+      text-align: center;
+      margin: 5px;
+      color: azure;
     }
   }
 }

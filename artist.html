@@ -11,6 +11,14 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="artist.css" />
+    <!-- this one is needed for the swiper to work properly -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <!-- this one is needed for the swiper to work properly -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
     <script
       src="https://kit.fontawesome.com/791cca2dc6.js"
       crossorigin="anonymous"
@@ -18,6 +26,20 @@
     <title>Document</title>
   </head>
   <body>
+    <!-- slider test --><!-- Slider main container -->
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <!-- will be added using js and the class "swiper-slide"-->
+      </div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+
+    <!-- slider test end -->
     <div
       id="artist-wrapper"
       class="d-flex flex-column justify-content-center align-items-center"
@@ -28,9 +50,9 @@
         style="height: 300px"
       >
         <p id="monthly-listeners" class="m-0 text-light-emphasis">
-          10 monthly listeners
+          We honestly don't know how many people are listening to
         </p>
-        <h2 id="artist-name" class="m-4 text-light">Queen</h2>
+        <h2 id="artist-name" class="m-4 text-light"></h2>
         <div
           id="artist-buttons"
           class="d-flex flex-row gap-3 align-items-baseline"
@@ -52,24 +74,41 @@
       </div>
       <div
         id="artist-bottom"
-        class="bg-dark w-100 d-flex justify-content-center align-items-center flex-column p-5"
+        class="bg-black w-100 d-flex justify-content-center align-items-center flex-column p-5"
       >
         <nav id="artist-nav" class="d-flex gap-4 m-3">
-          <li class="list-inline-item text-uppercase text-light">Overview</li>
-          <li class="list-inline-item text-uppercase text-light">
+          <li
+            class="list-inline-item text-uppercase text-light"
+            id="artist-overview"
+          >
+            Overview
+          </li>
+          <li
+            class="list-inline-item text-uppercase text-light"
+            id="artist-related-artists"
+          >
             Related Artists
           </li>
-          <li class="list-inline-item text-uppercase text-light">About</li>
+          <li
+            class="list-inline-item text-uppercase text-light"
+            id="artist-about"
+          >
+            About
+          </li>
         </nav>
         <div id="artist-bottom-albums">
           <h3 id="artist-albums" class="text-light">Alben</h3>
           <div
             id="artist-albums-content"
-            class="d-flex flex-wrap gap-4 w-75 m-auto"
+            class="d-flex flex-wrap gap-4 w-100 m-auto"
           ></div>
+        </div>
+        <div id="artistAddMessage" class="position-absolute p-5">
+          The artist has been added to your list.
         </div>
       </div>
     </div>
   </body>
+
   <script type="module" src="/artist.js"></script>
 </html>
