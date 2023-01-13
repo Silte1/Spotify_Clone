@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+ background:rgb(24, 24, 24);
+}
+
+
+/* container for music player */
+.container {
+ position: absolute;
+ height: 50%;
+ width: 100%;
+ margin: auto;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ overflow: hidden;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ /* background: #000000; */
+ border-radius: 10px;
+ box-shadow: 0 0 10px #000000;
+}
+
+
+/* track artist */
+.song-artist {
+ position: absolute;
+ z-index: 4;
+ color: rgb(242, 245, 235);
+ font-family: 'Montserrat', sans-serif;
+ font-weight: bold;
+ font-size: 20px;
+ bottom: 45%;
+ left: 25%;
+}
+
+/* track title */
+.song-title {
+ position: absolute;
+ z-index: 4;
+color: rgb(242, 245, 235);
+ font-family: 'Montserrat', sans-serif;
+ font-size: 17px;
+ bottom: 35%;
+ left: 25%;
+}
+
+.control {
+ display: flex;
+ position: relative;
+ bottom: 27%;
+
+}
+
+/* style for next and previous song images */
+#next-song,
+#previous-song,
+#sycle-shuffle,
+#suffle-song,
+#play-pause,
+#sync-shuffle {
+ position: relative;
+ flex-direction: row;
+ align-items: center;
+ height: 30px;
+ width: 30px;
+ filter: invert(1);
+ cursor: pointer;
+ font-size: 40px;
+ z-index: 3;
+ margin-top: -25%;
+ padding: 25px;
+color: rgb(242, 245, 235);
+ left: 215%;
+}
+
+.pic-in-pic {
+ position: absolute;
+ color: rgb(242, 245, 235);
+ left: 40%;
+ top: 55%;
+ font-size: 30px;
+}
+
+
+/* album cover */
+#thumbnail {
+ position: absolute;
+ width: 18%;
+ height: 50%;
+ top: 30%;
+ left: 5%;
+ transition: 1s;
+ z-index: 3;
+}
+
+/* style for current time of the track */
+.currentTime {
+ position: absolute;
+
+ height: 50px;
+ width: 50px;
+ cursor: pointer;
+ /* margin-top: 10%; */
+ /* bottom: 1.8%; */
+ left: 45%;
+ z-index: 4;
+ font-family: 'Montserrat', sans-serif;
+ font-size: 30px;
+ color: rgb(242, 245, 235);
+ align-items: center;
+}
+
+/* style for the total length of the track */
+.durationTime {
+ position: absolute;
+ height: 50px;
+ width: 50px;
+ cursor: pointer;
+ /* bottom: 1.8%; */
+ right: 20%;
+ z-index: 4;
+ font-family: 'Montserrat', sans-serif;
+ font-size: 30px;
+ align-items: center;
+ color: rgb(242, 245, 235);
+ z-index: 4;
+}
+
+/* style for the progress bar */
+#progress-bar {
+ -webkit-appearance: none;
+ appearance: none;
+ position: absolute;
+ z-index: 4;
+ height: 5px;
+ background: rgb(242, 245, 235);
+ width: 160pt;
+ /* bottom: 8%; */
+ border-radius: 30px;
+ left: 50%;
+ width: 25%;
+}
+
+/* style for the progress bar's slider thumb */
+#progress-bar::-webkit-slider-thumb {
+ -webkit-appearance: none;
+ margin-top: -3px;
+ margin-left: 0px;
+ height: 10px;
+ width: 7px;
+ border: 0;
+ background: -webkit-linear-gradient(45deg, rgb(213, 213, 213), rgb(193, 255, 6));
+ border-radius: 30px;
+ cursor: pointer;
+}
+
+/* style for the progress bar's runnable track */
+#progress-bar::-webkit-slider-runnable-track {
+ -webkit-appearance: none;
+ appearance: none;
+ cursor: pointer;
+ max-height: 5px;
+ border-radius: 30px;
+}
+
+/* style to remove blue shade of the progress bar when clicked on/selected */
+#progress-bar:focus {
+ outline: none;
+}
+
+.valume-box {
+ /* display: inline-block; */
+ /* position: absolute; */
+ display: flex;
+ justify-content: center;
+ text-align: center;
+ margin-top: 20%;
+ margin-left: 60%;
+
+}
+
+.queue-icon {
+ color: rgb(63, 3, 57);
+ width: 25px;
+ height: 25px;
+ background-color: aliceblue;
+ padding: 15px;
+}
+
+.valume-icon {
+ /* position: absolute; */
+ color: rgb(212, 16, 193);
+ width: 25px;
+ height: 25px;
+ background-color: rgb(203, 218, 231);
+ padding: 15px;
+}
+/* like section */
+
+
+.action {
+ height: 18vh;
+ width: 18vh;
+ margin: auto;
+ position: absolute;
+ top: 0;
+ bottom: 0;
+}
+
+.love {
+ left: 50vw;
+}
+
+.send {
+ background: url("https://cbwconline.com/IMG/Codepen/Send-Grey.svg") center/contain no-repeat;
+ left: 40vw;
+}
+
+.more {
+ background: url("https://cbwconline.com/IMG/Codepen/More-Grey.svg") center/contain no-repeat;
+ left: 40vw;
+}
+
+.likepost {
+ position: absolute;
+color: rgb(242, 245, 235);
+ left: -135%;
+ top: 66%;
+ font-size: 30px;
+}
+
+
+.heart:before {
+ top: -4.5vh;
+ left: 0
+}
+
+.heart:after {
+ top: 0;
+ left: 4.5vh;
+}
+
+
+
+.heart.love:before,
+.heart.love:after {
+ color: #f80808;
+} 
+

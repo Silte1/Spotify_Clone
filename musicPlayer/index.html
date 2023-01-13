@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/musicPlayer/style.css">
+  <script src="https://kit.fontawesome.com/906ae66076.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+
+<style>
+
+</style>
+
+<body>
+<audio src="../musicSong/beyonce.mp3" id="song"></audio>
+  <div class="container">
+    <img src="../picAsset/song for my father.jpg" id="thumbnail" />
+
+    <div class="contol">
+
+  
+    <img src="../icons/shuflle-preview.png" onclick="previousSong()" id="suffle-song" />
+
+    <img src="../icons/backward.png" onclick="previousSong()" id="previous-song" />
+
+     <img src="../icons/play.png" onclick="playPause()" id="play-pause" />
+
+    <img src="../icons/forward.png" onclick="nextSong()" id="next-song" />
+
+    <img src="../icons/Shuffle_icon.svg.png" onclick="previousSong()" id="sycle-shuffle" />
+
+ 
+  </div>
+likepost
+  <div class="song-artist">Song For My Father</div>
+  <div class="song-title">Horace silver</div>
+  <!-- <div><a href="#"><i class='fas fa-heart likepost' style="margin-right:10px;" id="heart" onclick="toggleLike()"></i></a></div> -->
+  <div><i class="fa-regular fa-images pic-in-pic "></i></div>
+
+  <!-- Input element for progress bar - min=0 starting value of every song - max length will change per song so leave empty -->
+
+  <input type="range" id="progress-bar" min="0" max="" value="0" onchange="changeProgressBar()" />
+  <div class="currentTime"><span class="audiotime" id="audiotime">0:00</span></div>
+  <div class="durationTime"><span class="audiotime" id="audioduration">0:00</span></div>
+
+
+<div class="valume-box">
+
+
+  <div><img src="../icons/queue_icon_149190 (1).png" class="queue-icon" alt=""> </div>
+  <div><i class="fa-solid fa-address-book "></i></div>
+  <div><i class="fa-duotone fa-volume valume-icon"></i></div>
+<input type="range" id="valumw-bar" min="0" max="" value="0" onchange="changeProgressBar()" />
+</div>
+</div>
+
+  </div>
+
+<div class="playlist">
+  <a href="#">
+    <span class="material-icons">playlist_play</span>
+  </a>
+</div>
+
+<!-- like section -->
+<div class="card">
+  <div class="bar">
+    <div class="love action">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    <div><a href="#"><i class='fas fa-heart likepost heart' style="margin-right:10px;" id="heart" onclick="toggleLike()"></i></a>
+    </div>
+    </div>
+    <div class="send action"></div>
+    <div class="more action"></div>
+  </div>
+</div>
+
+
+  <script src="/musicPlayer/index.js"></script>
+  <script src="/musicPlayer/like.js"></script>
+</body>
+
+</html>
+
+
+<!-- <div class="controls">
+      <span class="alink1"><i class="fas fa-random"></i></span>
+      <span class="alink2"><i class="fas fa-step-backward"></i></span>
+      <span class="alink3"><i class="fas fa-play"></i></span>
+      <span class="alink4"><i class="fas fa-step-forward"></i></span>
+      <span class="alink5"><i class="fas fa-sync-alt"></i></span>
