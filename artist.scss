@@ -85,9 +85,9 @@ li {
       width: 100%;
     }
     p {
-      font-size: 0.8rem;
+      font-size: clamp(0.6rem, 1vw, 1rem);
       text-align: center;
-      margin: 5px;
+      padding: 1rem;
       color: azure;
     }
   }

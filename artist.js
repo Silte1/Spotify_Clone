@@ -171,11 +171,11 @@ throwbackAlbumIds.forEach(async (element) => {
   }
 });
 
-//:::::::::::::::: S W I P E R for home page
+//:::::::::::::::: S W I P E R for home page (swiperjs)
 
 const swiper = new Swiper(".swiper", {
   // Optional parameters
-  slidesPerView: 7,
+  slidesPerView: 5,
   spaceBetween: 10,
   speed: 400,
   loop: true,
