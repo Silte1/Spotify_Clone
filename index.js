@@ -1,26 +1,21 @@
+import { API_KEY, API_URL } from "./env.js";
+
+
+// Target all variable a need for my work
 const searchBtn = document.querySelector('#addon-wrapping') ;
 const searchInput = document.querySelector('#searchInput'),
 artist = document.querySelector('#artist'),
 searchResult = document.querySelector('#searchResult'),
 tractSection = document.querySelector('#tract');
 
-// console.log(searchInput.textContent);
-// console.log(searchBtn.textContent);
-// console.log(artist.textContent);
-// console.log(searchResult.textContent);
-// console.log(tractSection.textContent);
+// sage 
 
-
-
-
-const key = "f5334cafbcmshb1e8fe95374091bp145087jsn2964757736a3";
-const host = 'deezerdevs-deezer.p.rapidapi.com';
 
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': key,
-		'X-RapidAPI-Host': host
+		'X-RapidAPI-Key': API_KEY,
+		'X-RapidAPI-Host': API_URL
 	}
 };
 
