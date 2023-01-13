@@ -1,12 +1,13 @@
 // toDo:
-// - login button eine ID geben (siehe unten)
-// - input feldern eine ID geben(siehe unten)
+// - login button eine ID geben (line 11)
+// - input feldern eine ID geben(line 9 und 10 )
+// - change path of next page(see lin 31)
 
 //::::::::: Variables for login
 
 // login Button and input
-const userNameInput = document.getElementById("name");
-const passwordInput = document.getElementById("password");
+const userNameInput = document.getElementById("userName");
+const passwordInput = document.getElementById("userPassword");
 const loginBtn = document.getElementById("login");
 
 // Array of Users
