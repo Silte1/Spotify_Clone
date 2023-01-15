@@ -25,31 +25,16 @@ const options = {
 	}
 };
 
-const fetchingFunction = async () => {
+// const fetchingFunction = async () => {
   try {  
     let artistToSearch = (searchInput.value).toLowerCase();
     const response = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artistToSearch}`, options);
     const data = await response.json();
     
-    console.log(data.data);
-    console.log(data);
-    data.data.map(elm => {
-      searchResult.innerHTML = `Search results for "${searchInput.value}"`;
+    // console.log(data.data);
+
+
   
-      artist.innerHTML = `<h2>Artist</h2>
-      <div class="card" style="width: 18rem;">
-      <img src="${elm.artist.picture_medium}" class="" alt="...">
-      <div class="card-body">
-        <h3 id = "artistName">${(searchInput.value)}</h3>
-        <p id="card-text">artist</p>
-      </div>
-    </div>`
-    document.querySelector('#artistName').style.color = 'black';
-    document.querySelector('#card-text').style.color = 'black';
-
-
-
-    })
     
 
     if(!response.ok){
@@ -61,9 +46,9 @@ const fetchingFunction = async () => {
   }
 
 
-}
+// }
 
-async function getAlbums(artist) {
+async function getAlbums() {
   try {
     // data needs to be defined before the do while loop further down in the code. if we don't define it here, the loop does not work
 
@@ -76,7 +61,7 @@ async function getAlbums(artist) {
     //tries to fetch artist data until data.data is no longer undefined
     do {
       const response = await fetch(
-        `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`,
+        `https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchInput.value}`,
         options
       );
       data = await response.json();
@@ -86,35 +71,65 @@ async function getAlbums(artist) {
     // artistName.innerText = artist.toUpperCase();
     // artistTop.style.background = `url(${data.data[0].artist.picture_xl})`;
 
+    // create a card to display the name and the picture of the searching artist
+     console.log(data.data[0].artist.picture_medium);
+   
+     searchResult.innerHTML = `Search results for "${searchInput.value}"`;
+
+     artist.innerHTML = `
+     <h2>Artist</h2>
+     <div class="card  bg-dark" id= 'artistCard' style="width: 12rem;">
+     <img src="${data.data[0].artist.picture_medium}" id = 'artistPicture' alt="...">
+     <div class="card-body">
+       <h3 id = "artistName">${(searchInput.value)}</h3>
+       <p id="cardText">artist</p>
+     </div>
+   </div>`
+  //  document.querySelector('#artistName').style.color = 'black';
+  //  document.querySelector('#cardText').style.color = 'black';
+  //  document.querySelector('#artistCard').style.width = '120px';
+   document.querySelector('#artistCard').style.min_height = '150px';
+   document.querySelector('#artistCard').style.margin_bottom = '300px';
+
+
     // loops over tracks of the artist and displays their information in the "albums-content" element
+    const cardTitle = document.createElement("h2");
+    cardTitle.innerText = 'Tracks'
+    tractSection.before(cardTitle)
+
     data.data.map((track) => {
+      // console.log(track);
       const card = document.createElement("div");
       const image = document.createElement("img");
       const title = document.createElement("h6");
       const artistName = document.createElement("p");
 
-      card.classList.add("card");
-      card.style.width = '100px'
-      card.style.height = '120px'
+      // card.classList.add("card");
+      card.style.width = '200px';
+      card.style.height = '200px';
+      card.style.transition = '300ms';
 
+      // card.classList.add("card");
       image.classList.add("card-img-top");
-      image.style.width = '100px';
-      image.style.height = '100px';
+      image.style.width = '150px';
+      image.style.height = '150px';
       title.classList.add("card-title", "text-center", "text-light");
       title.style.color = 'black';
       artistName.classList.add("card-text", "text-center", "text-light");
       artistName.style.color = 'black';
 
-
       image.src = track.album.cover;
-
-
-
       title.innerText = track.title;
       artistName.innerText = track.artist.name;
 
-      card.append(image, title, artistName);
+      card.append( image, title, artistName);
       tractSection.append(card);
+      card.addEventListener('mouseover', (e)=>{
+        e.target.style.opacity = '0.4';
+      })
+      card.addEventListener('mouseout', (e)=>{
+        e.target.style.opacity = '1';
+      })
     });
 
     // Eventlistener on "play" : plays the preview of one of the first 25 songs
@@ -135,9 +150,6 @@ async function getAlbums(artist) {
 
 
 searchBtn.addEventListener('click', (e)=>{
-  console.log("hier",searchInput.value)
-
-    
-     fetchingFunction()
-     getAlbums()
+      // fetchingFunction()
+     getAlbums(searchInput.value)
   }) 
