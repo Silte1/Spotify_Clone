@@ -74,11 +74,24 @@ async function getAlbums() {
 
     // loops over tracks of the artist and displays their information in the "albums-content" element
     const cardTitle = document.createElement("h2");
-    cardTitle.innerText = 'Tracks'
+    if(cardTitle.innerText == "Tracks"){return}
+    else{cardTitle.innerText = 'Tracks'}
+
     tractSection.before(cardTitle)
 
     data.data.map((track) => {
-      // console.log(track);
+      tractSection.innerHTML = `
+      <div class="card  bg-dark" id= 'artistCard' style="width: 12rem;">
+
+      <div class="card  bg-dark " id= 'artistCard' style="width: 20rem; height: 20rem; transition = 300ms">
+ 
+      <img src="${data.data[0].artist.picture_medium}" id = 'artistPicture' alt="...">
+      <div class="card-body">
+        <h3 id = "artistName">${(searchInput.value)}</h3>
+        <p id="cardText">artist</p>
+      </div>
+    </div>
+      `
       const card = document.createElement("div");
       const image = document.createElement("img");
       const title = document.createElement("h6");
