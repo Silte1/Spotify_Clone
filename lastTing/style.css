@@ -137,6 +137,7 @@ header .menu_side .menu_song {
 header .master_play {
  display: flex;
  align-items: center;
+ /* flex-direction: column; */
  padding: 0px 20px;
 }
 
@@ -225,6 +226,9 @@ header .master_play .icon {
  font-size: 20px;
  color: #fff;
  margin: 0 20px 0 40px;
+ margin-left: 150px;
+ /* display: flex;
+ flex-direction: column; */
 }
 
 header .master_play .icon .bi {
@@ -473,78 +477,6 @@ header .song_side .content {
  padding-top: 20px;
 }
 
-/* header .song_side .content h1{
-font-size: 25px;
-font-weight:600 ;
-}
-header .song_side .content p {
- font-size: 11px;
- font-weight: 400;
- color: #4c5262;
- margin: 5px;
-}
-header .song_side .content .buttons {
-margin-top: 15px;
-}
-header .song_side .content .buttons button {
-width: 130px;
-height: 30px;
-border:2px solid #36e2ec;
-outline: none;
-border-radius: 20px;
-background: #5adae0;
-color: #fff;
-cursor: pointer;
-transition: .3s linear;
-}
-header .song_side .content .buttons button:hover {
-border: 2px solid #36e2ec;
-background: none;
-color: #36e2ec;
-}
-
-header .song_side .content .buttons button:nth-child(2) {
- border: 2px solid #36e2ec;
- background: none;
- color: #36e2ec;
-}
-header .song_side .content .buttons button:nth-child(2):hover {
- border: 2px solid #36e2ec;
- background: #36e2ec;
- color: #fff;
-}
-
-header .song_side .popular_song{
- width: 90%;
- height: auto;
- border: 1px solid #fff;
- margin: auto;
- margin-top: 15px;
-}
-header .song_side .popular_song .h4{
-display: flex;
-align-items: center;
-justify-content: space-between;
-}
-header .song_side .popular_song .h4 .bi {
-color: #a4a8b4;
-cursor: pointer;
-transition: .3s linear;
-}
-header .song_side .popular_song .h4 .bi:hover {
- color: #fff;
- 
-}
-header .song_side .popular_song .pop_song{
- width: 100%;
- height: 150px;
- margin-top: 15px;
- display: flex;
-} */
-
-/* 57:70 */
-
-
 
 
 
@@ -593,29 +525,34 @@ header .song_side .popular_song .pop_song{
 .main-bottom {
  /* border: 2px solid #fff; */
  width: 100%;
- height: 35%;
+ height: 25%;
  position: relative;
 
 }
 
 /* hart and likepost */
+.love {
+  margin-left: 85px;
+}
+
 .likepost {
-  position: absolute;
+  /* position: relative; */
   color: rgb(242, 245, 235);
-  left: -135%;
-  top: 66%;
+  /* left: -135%; */
+  /* top:75%; */
   font-size: 30px;
+   margin-left: 15px;
 }
 
 
 .heart:before {
-  top: -4.5vh;
+  /* top: -4.5vh; */
   left: 0
 }
 
 .heart:after {
   top: 0;
-  left: 4.5vh;
+  /* left: 4.5vh; */
 }
 
 
@@ -623,4 +560,13 @@ header .song_side .popular_song .pop_song{
 .heart.love:before,
 .heart.love:after {
   color: #f80808;
+}
+
+.pic-in-pic {
+  position: absolute;
+  color: rgb(242, 245, 235);
+  left: 21%;
+  bottom: 45px;
+  /* top: 5%;  */
+  font-size: 30px;
 }
