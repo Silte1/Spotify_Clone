@@ -172,6 +172,13 @@ $(".love").click(function () {
 // :::::::::::::: Nav Functions
 
 sideNav.addEventListener("click", (e) => {
+  if (e.target.id === "home-page" || e.target.classList.contains("fa-house")) {
+    window.location.href = "#";
+  } else if (
+    e.target.id === "search-page" ||
+    e.target.classList.contains("fa-magnifying-glass")
+  ) {
+    window.location.href = "../search-page/index.html";
+  }
   console.log(e.target);
-  window.location.href = "home-page/home.html";
 });

@@ -1,22 +1,11 @@
-import { API_KEY, API_URL } from "./env.js";
+import { API_KEY, API_URL } from "../env.js";
 
-//::::::::::::::::: Variables
-
-// Links in the left-side nav
-const sideNav = document.getElementById("sideNav");
-
-// Artist page
-const artistPlay = document.getElementById("artist-play");
-const artistTop = document.getElementById("artist-top");
-const artistFollow = document.getElementById("artist-follow");
-const artistName = document.getElementById("artist-name");
-const artistAddMessage = document.getElementById("artistAddMessage");
-const artistOverview = document.getElementById("artist-overview");
-const artistRelatedArtists = document.getElementById("artist-related-artists");
-const artistAbout = document.getElementById("artist-about");
-
-const artistBottom = document.getElementById("artist-bottom");
-const artistAlbumsContent = document.getElementById("artist-albums-content");
+// Target all variable a need for my work
+const searchBtn = document.querySelector("#addon-wrapping");
+const searchInput = document.querySelector("#searchInput"),
+  artist = document.querySelector("#artist"),
+  searchResult = document.querySelector("#searchResult"),
+  tractSection = document.querySelector("#tract");
 
 // Audio player variables
 const progressBar = document.getElementById("seek");
@@ -29,7 +18,19 @@ const playerNext = document.getElementById("playerNext");
 const playerArtistImage = document.getElementById("player-artist-image");
 let playing = true;
 
-//for fetching
+// variable to save the tracks
+const tracks = [];
+
+// console.log("hier", tractSection.innerHTML == "");
+
+// sage
+
+// let api = API_KEY;
+// let host = API_URL;
+
+console.log(API_KEY);
+console.log(API_URL);
+
 const options = {
   method: "GET",
   headers: {
@@ -37,56 +38,69 @@ const options = {
     "X-RapidAPI-Host": API_URL,
   },
 };
-// variable to save the tracks
-const tracks = [];
 
-// use the artist variable to change the artists page
-const artist = localStorage.getItem("artistVariable");
-
-//::::::::::::::::: Functions
-console.log(artist);
-/** creates a message that artist has been added to "follow" list. STILL NEEDS TO ADD ARTIST TO SAID LIST */
-function followArtist() {
-  artistAddMessage.style.display = "block";
-  setTimeout(() => {
-    artistAddMessage.style.display = "none";
-  }, 2000);
-}
-
-/**function fills the artist page dynamically with content */
-async function getAlbums(artist) {
+async function getAlbums(par) {
   try {
     // data needs to be defined before the do while loop further down in the code. if we don't define it here, the loop does not work
 
     let data;
 
     // resets the artist bottom page
-    document.getElementById("artist-albums").innerText = "Albums";
-    document.getElementById("artist-albums-content").innerText = "";
+    // document.getElementById("artist-albums").innerText = "Albums";
+    // document.getElementById("artist-albums-content").innerText = "";
 
     //tries to fetch artist data until data.data is no longer undefined
     do {
       const response = await fetch(
-        `https://deezerdevs-deezer.p.rapidapi.com/search?q=${artist}`,
+        `https://deezerdevs-deezer.p.rapidapi.com/search?q=${par}`,
         options
       );
       data = await response.json();
     } while (!data.data);
 
     // enters artist Name and picture in the artist top page
-    artistName.innerText = artist.toUpperCase();
-    artistTop.style.background = `url(${data.data[0].artist.picture_xl}) center / cover no-repeat`;
+    // artistName.innerText = artist.toUpperCase();
+    // artistTop.style.background = `url(${data.data[0].artist.picture_xl})`;
+
+    // create a card to display the name and the picture of the searching artist
+
+    searchResult.innerHTML = `Search results for "${par}"`;
+
+    artist.innerHTML = `
+     <h2>Artist</h2>
+
+     <div class="card  bg-dark " id= 'artistCard' style="width: 12rem; min-height: 15rem">
+
+     <img src="${data.data[0].artist.picture_medium}" id = 'artistPicture' alt="...">
+     <div class="card-body">
+       <h3 id = "artistName">${par}</h3>
+       <p id="cardText">artist</p>
+     </div>
+   </div>`;
+
+    document.getElementById("artistCard").addEventListener("click", (e) => {
+      localStorage.setItem("artistVariable", data.data[0].artist.name);
+      window.location.href = "../artist.html";
+      console.log(data.data[0].artist.name);
+    });
 
     // loops over tracks of the artist and displays their information in the "albums-content" element
+
     data.data.map((track) => {
       tracks.push(track);
+      document.querySelector("#trackTitle").removeAttribute("hidden");
       const card = document.createElement("div");
       const image = document.createElement("img");
       const title = document.createElement("h6");
       const artistName = document.createElement("p");
 
-      card.classList.add("card");
+      card.style.width = "200px";
+      card.style.height = "200px";
+      card.style.transition = "300ms";
+
       image.classList.add("card-img-top");
+      image.style.width = "150px";
+      image.style.height = "150px";
       title.classList.add("card-title", "text-center", "text-light");
       artistName.classList.add("card-text", "text-center", "text-light");
 
@@ -95,9 +109,13 @@ async function getAlbums(artist) {
       artistName.innerText = track.artist.name;
 
       card.append(image, title, artistName);
-      artistAlbumsContent.append(card);
-
-      // Eventlistener to play a song in player
+      tractSection.append(card);
+      card.addEventListener("mouseover", (e) => {
+        e.target.style.opacity = "0.4";
+      });
+      card.addEventListener("mouseout", (e) => {
+        e.target.style.opacity = "1";
+      });
       card.addEventListener("click", (e) => {
         song.src = track.preview;
         song.play();
@@ -117,42 +135,15 @@ async function getAlbums(artist) {
     playerPrevious.addEventListener("click", (e) => {
       prevnextTitles(-1);
     });
-    // Eventlistener on "play" : plays the preview of one of the first 25 songs
-    artistPlay.addEventListener("click", (e) => {
-      let random = Math.floor(Math.random() * 25);
-      const a = new Audio(data.data[random].preview);
-      a.play();
-    });
-
-    // Eventlistener on "follow", adds artist to follow list
-    artistFollow.addEventListener("click", (e) => {
-      followArtist();
-    });
   } catch (error) {
     console.log("error fetching artist:", error, error.message);
   }
 }
 
-//::::::::::::::: Events
-
-// Eventlistener "about": loads about artist page
-artistAbout.addEventListener("click", (e) => {
-  document.getElementById("artist-albums").innerText = "About";
-  document.getElementById("artist-albums-content").innerText =
-    "There is really not much to say about them.";
-});
-
-// Eventlistener "related artists": loads related artists page
-
-artistRelatedArtists.addEventListener("click", (e) => {
-  document.getElementById("artist-albums").innerText = "Related Artists";
-  document.getElementById("artist-albums-content").innerText =
-    "Nobody makes music the way they do!";
-});
-
-// Eventlistener "overview": loads album page
-artistOverview.addEventListener("click", (e) => {
-  getAlbums(artist);
+searchBtn.addEventListener("click", (e) => {
+  tractSection.innerHTML = "";
+  getAlbums(searchInput.value);
+  searchInput.value = "";
 });
 
 //::::::::::::::::  AUDIO PLAYER
@@ -231,15 +222,12 @@ $(".love").click(function () {
 
 sideNav.addEventListener("click", (e) => {
   if (e.target.id === "home-page" || e.target.classList.contains("fa-house")) {
-    window.location.href = "home-page/home.html";
+    window.location.href = "../home-page/home.html";
   } else if (
     e.target.id === "search-page" ||
     e.target.classList.contains("fa-magnifying-glass")
   ) {
-    window.location.href = "search-page/index.html";
+    window.location.href = "#";
   }
   console.log(e.target);
 });
-
-//fills the page with content
-getAlbums(artist);

@@ -37,6 +37,7 @@ body #sideNav li {
   width: 800%;
   display: flex;
   color: gray;
+  cursor: pointer;
   /* justify-content: space-between; */
 }
 
@@ -237,7 +238,7 @@ li {
   border-radius: 10px 10px 0 0;
   background: #36e2ec;
   -webkit-animation: unset;
-          animation: unset;
+  animation: unset;
 }
 .master_play .wave .wave1:nth-child(2) {
   height: 13px;
@@ -247,17 +248,17 @@ li {
 }
 .master_play .active2 .wave1 {
   -webkit-animation: wave 0.5s linear infinite;
-          animation: wave 0.5s linear infinite;
+  animation: wave 0.5s linear infinite;
 }
 .master_play .active2 .wave1:nth-child(2) {
   /* height: 13px; */
   -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s;
+  animation-delay: 0.4s;
 }
 .master_play .active2 .wave1:nth-child(3) {
   /* height: 8px; */
   -webkit-animation-delay: 0.8s;
-          animation-delay: 0.8s;
+  animation-delay: 0.8s;
 }
 
 #artist-top #artist-buttons #artist-follow {
@@ -333,4 +334,4 @@ li {
   text-align: center;
   padding: 1rem;
   color: azure;
-}/*# sourceMappingURL=artist.css.map */
+} /*# sourceMappingURL=artist.css.map */
