@@ -6,6 +6,8 @@ const progressBar = document.querySelector('#progress-bar'); // element where pr
 let pPause = document.querySelector('#play-pause'); // element where play and pause image appears
 
 
+
+
 songIndex = 0;
 songs = ['../musicSong/beyonce.mp3', '../musicSong/dontstartnow.mp3']; // object storing paths for audio objects
 thumbnails = ["../picAsset/song for my father.jpg", " ../picAsset/song for my father.jpg"]; // object storing paths for album covers and backgrounds
