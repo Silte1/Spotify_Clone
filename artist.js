@@ -56,7 +56,7 @@ async function getAlbums(artist) {
 
     // enters artist Name and picture in the artist top page
     artistName.innerText = artist.toUpperCase();
-    artistTop.style.background = `url(${data.data[0].artist.picture_xl})`;
+    artistTop.style.background = `url(${data.data[0].artist.picture_xl}) top / cover no-repeat`;
 
     // loops over tracks of the artist and displays their information in the "albums-content" element
     data.data.map((track) => {
