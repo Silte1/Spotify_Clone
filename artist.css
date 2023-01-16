@@ -67,18 +67,21 @@ li {
   margin-left: 15px;
   color: #fff;
   line-height: 15px;
-  /* hart and likepost */
+  /* heart and likepost */
 }
 #artist-wrapper .master_play h5 .subtitle {
   font-size: 11px;
   color: #4c5262;
 }
-#artist-wrapper .master_play h5 .likepost {
+#artist-wrapper .master_play h5 .love {
   position: absolute;
+  top: 25%;
+  margin-left: 85px;
+}
+#artist-wrapper .master_play h5 .likepost {
   color: rgb(242, 245, 235);
-  left: -135%;
-  top: 66%;
   font-size: 30px;
+  margin-left: 15px;
 }
 #artist-wrapper .master_play h5 .heart:before {
   top: -4.5vh;

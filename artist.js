@@ -2,6 +2,10 @@ import { API_KEY, API_URL } from "./env.js";
 
 //::::::::::::::::: Variables
 
+// Links in the left-side nav
+const sideNav = document.getElementById("sideNav");
+
+// Artist page
 const artistPlay = document.getElementById("artist-play");
 const artistTop = document.getElementById("artist-top");
 const artistFollow = document.getElementById("artist-follow");
@@ -281,5 +285,24 @@ function prevnextTitles(param) {
   playerArtist.innerHTML = track.artist.name;
   playerArtistImage.src = track.album.cover;
 }
+
+// like button
+$(".love").click(function () {
+  $(".heart").toggleClass("love");
+  $(".line, .heart")
+    .addClass("active")
+    .delay(100)
+    .queue(function (next) {
+      $(".line, .heart").removeClass("active");
+      next();
+    });
+});
+
+// :::::::::::::: Nav Functions
+
+sideNav.addEventListener("click", (e) => {
+  console.log(e.target);
+});
+
 //fills the page with content
 getAlbums(artist);

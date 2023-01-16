@@ -69,13 +69,16 @@ li {
         font-size: 11px;
         color: #4c5262;
       }
-      /* hart and likepost */
-      .likepost {
+      /* heart and likepost */
+      .love {
         position: absolute;
+        top: 25%;
+        margin-left: 85px;
+      }
+      .likepost {
         color: rgb(242, 245, 235);
-        left: -135%;
-        top: 66%;
         font-size: 30px;
+        margin-left: 15px;
       }
 
       .heart:before {
