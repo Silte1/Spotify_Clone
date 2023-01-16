@@ -56,3 +56,14 @@ async function getAlbums(artist) {
       console.log("error fetching artist:", error, error.message);
     }
   }
+
+  tractSection.innerHTML = `
+  <div class="card  bg-dark " id= 'artistCard' style="width: 20rem; height: 20rem; transition = 300ms">
+
+<img src="${track.album.cover}"  class="card-img-top" style="width: 15rem; height: 15rem; alt="...">
+<div class="card-body">
+<h6 class = "card-title", "text-center", "text-light " >${track.title}</h6>
+<p class = "card-text", "text-center", "text-light ">${track.artist.name}</p>
+</div>
+</div>
+`

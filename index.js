@@ -7,6 +7,8 @@ const searchInput = document.querySelector('#searchInput'),
 artist = document.querySelector('#artist'),
 searchResult = document.querySelector('#searchResult'),
 tractSection = document.querySelector('#tract');
+// console.log("hier", tractSection.innerHTML == "");
+
 
 // sage 
 
@@ -27,7 +29,7 @@ const options = {
 
 
 
-async function getAlbums() {
+async function getAlbums(par) {
   try {
     // data needs to be defined before the do while loop further down in the code. if we don't define it here, the loop does not work
 
@@ -40,7 +42,7 @@ async function getAlbums() {
     //tries to fetch artist data until data.data is no longer undefined
     do {
       const response = await fetch(
-        `https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchInput.value}`,
+        `https://deezerdevs-deezer.p.rapidapi.com/search?q=${par}`,
         options
       );
       data = await response.json();
@@ -53,7 +55,7 @@ async function getAlbums() {
     // create a card to display the name and the picture of the searching artist
      console.log(data.data[0].artist.picture_medium);
    
-     searchResult.innerHTML = `Search results for "${searchInput.value}"`;
+     searchResult.innerHTML = `Search results for "${par}"`;
 
      artist.innerHTML = `
      <h2>Artist</h2>
@@ -64,7 +66,7 @@ async function getAlbums() {
 
      <img src="${data.data[0].artist.picture_medium}" id = 'artistPicture' alt="...">
      <div class="card-body">
-       <h3 id = "artistName">${(searchInput.value)}</h3>
+       <h3 id = "artistName">${(par)}</h3>
        <p id="cardText">artist</p>
      </div>
    </div>`
@@ -73,43 +75,28 @@ async function getAlbums() {
 
 
     // loops over tracks of the artist and displays their information in the "albums-content" element
-    const cardTitle = document.createElement("h2");
-    if(cardTitle.innerText == "Tracks"){return}
-    else{cardTitle.innerText = 'Tracks'}
-
-    tractSection.before(cardTitle)
+  
+    
 
     data.data.map((track) => {
-      tractSection.innerHTML = `
-      <div class="card  bg-dark" id= 'artistCard' style="width: 12rem;">
-
-      <div class="card  bg-dark " id= 'artistCard' style="width: 20rem; height: 20rem; transition = 300ms">
- 
-      <img src="${data.data[0].artist.picture_medium}" id = 'artistPicture' alt="...">
-      <div class="card-body">
-        <h3 id = "artistName">${(searchInput.value)}</h3>
-        <p id="cardText">artist</p>
-      </div>
-    </div>
-      `
+      document.querySelector('#trackTitle').removeAttribute('hidden')
       const card = document.createElement("div");
       const image = document.createElement("img");
       const title = document.createElement("h6");
       const artistName = document.createElement("p");
 
-      // card.classList.add("card");
+     
       card.style.width = '200px';
       card.style.height = '200px';
       card.style.transition = '300ms';
 
-      // card.classList.add("card");
+      
       image.classList.add("card-img-top");
       image.style.width = '150px';
       image.style.height = '150px';
       title.classList.add("card-title", "text-center", "text-light");
-      title.style.color = 'black';
       artistName.classList.add("card-text", "text-center", "text-light");
-      artistName.style.color = 'black';
+
 
       image.src = track.album.cover;
       title.innerText = track.title;
@@ -143,5 +130,7 @@ async function getAlbums() {
 
 
 searchBtn.addEventListener('click', (e)=>{
-     getAlbums()
+  tractSection.innerHTML = "";
+     getAlbums(searchInput.value)
+     searchInput.value = "";
   }) 
