@@ -25,28 +25,7 @@ const options = {
 	}
 };
 
-// const fetchingFunction = async () => {
-  try {  
-    let artistToSearch = (searchInput.value).toLowerCase();
-    const response = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${artistToSearch}`, options);
-    const data = await response.json();
-    
-    // console.log(data.data);
 
-
-  
-    
-
-    if(!response.ok){
-      throw new Error(`Error: ${response.status}` )
-    }
-  }
-  catch(error){
-    console.log(error.message);
-  }
-
-
-// }
 
 async function getAlbums() {
   try {
@@ -78,7 +57,11 @@ async function getAlbums() {
 
      artist.innerHTML = `
      <h2>Artist</h2>
+
      <div class="card  bg-dark" id= 'artistCard' style="width: 12rem;">
+
+     <div class="card  bg-dark " id= 'artistCard' style="width: 12rem; min-height: 15rem">
+
      <img src="${data.data[0].artist.picture_medium}" id = 'artistPicture' alt="...">
      <div class="card-body">
        <h3 id = "artistName">${(searchInput.value)}</h3>
@@ -88,8 +71,13 @@ async function getAlbums() {
   //  document.querySelector('#artistName').style.color = 'black';
   //  document.querySelector('#cardText').style.color = 'black';
   //  document.querySelector('#artistCard').style.width = '120px';
+
    document.querySelector('#artistCard').style.min_height = '150px';
    document.querySelector('#artistCard').style.margin_bottom = '300px';
+
+  //  document.querySelector('#artistCard').style.min_height = '150px';
+   document.querySelector('#artistCard').style.margin_bottom = '5000px';
+
 
 
     // loops over tracks of the artist and displays their information in the "albums-content" element
