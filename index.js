@@ -68,15 +68,7 @@ async function getAlbums() {
        <p id="cardText">artist</p>
      </div>
    </div>`
-  //  document.querySelector('#artistName').style.color = 'black';
-  //  document.querySelector('#cardText').style.color = 'black';
-  //  document.querySelector('#artistCard').style.width = '120px';
 
-   document.querySelector('#artistCard').style.min_height = '150px';
-   document.querySelector('#artistCard').style.margin_bottom = '300px';
-
-  //  document.querySelector('#artistCard').style.min_height = '150px';
-   document.querySelector('#artistCard').style.margin_bottom = '5000px';
 
 
 
@@ -138,6 +130,5 @@ async function getAlbums() {
 
 
 searchBtn.addEventListener('click', (e)=>{
-      // fetchingFunction()
-     getAlbums(searchInput.value)
+     getAlbums()
   }) 
