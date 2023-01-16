@@ -20,6 +20,10 @@ const song = document.getElementById("song");
 const playerSong = document.getElementById("player-song-name");
 const playerArtist = document.getElementById("player-artist-name");
 const pPause = document.getElementById("pPause");
+const playerPrevious = document.getElementById("playerPrevious");
+const playerNext = document.getElementById("playerNext");
+const playerArtistImage = document.getElementById("player-artist-image");
+let playing = true;
 
 //for fetching
 const options = {
@@ -29,6 +33,8 @@ const options = {
     "X-RapidAPI-Host": API_URL,
   },
 };
+// variable to save the tracks
+const tracks = [];
 
 // use the artist variable to change the artists page
 const artist = "beyonce";
@@ -69,6 +75,7 @@ async function getAlbums(artist) {
 
     // loops over tracks of the artist and displays their information in the "albums-content" element
     data.data.map((track) => {
+      tracks.push(track);
       const card = document.createElement("div");
       const image = document.createElement("img");
       const title = document.createElement("h6");
@@ -85,16 +92,27 @@ async function getAlbums(artist) {
 
       card.append(image, title, artistName);
       artistAlbumsContent.append(card);
+
       // Eventlistener to play a song in player
       card.addEventListener("click", (e) => {
         song.src = track.preview;
         song.play();
-        console.log(playerSong);
+        pPause.classList.remove("bi-play-fill");
+        pPause.classList.add("bi-pause-fill");
+        playing = false;
+        console.log(track);
         playerSong.childNodes[0].data = "\n" + track.title;
         playerArtist.innerHTML = track.artist.name;
+        playerArtistImage.src = track.album.cover;
       });
     });
-
+    // Eventlistener on forward and previous song
+    playerNext.addEventListener("click", (e) => {
+      prevnextTitles(+1);
+    });
+    playerPrevious.addEventListener("click", (e) => {
+      prevnextTitles(-1);
+    });
     // Eventlistener on "play" : plays the preview of one of the first 25 songs
     artistPlay.addEventListener("click", (e) => {
       let random = Math.floor(Math.random() * 25);
@@ -207,9 +225,6 @@ const swiper = new Swiper(".swiper", {
 //::::::::::::::::  AUDIO PLAYER
 setInterval(updateProgressValue, 500);
 
-function changeProgressBar() {
-  song.currentTime = progressBar.value;
-}
 function updateProgressValue() {
   progressBar.max = song.duration;
   progressBar.value = song.currentTime;
@@ -234,21 +249,37 @@ function formatTime(seconds) {
   return `${min}:${sec}`;
 }
 
-pPause.addEventListener("click", playPause());
-
-let playing = true;
+pPause.addEventListener("click", playPause);
 
 function playPause() {
+  console.log("play clicked");
   if (playing) {
-    pPause.src = "../icons/pause.png";
-
+    pPause.classList.remove("bi-play-fill");
+    pPause.classList.add("bi-pause-fill");
     song.play();
     playing = false;
   } else {
-    pPause.src = "../icons/play.png";
+    pPause.classList.remove("bi-pause-fill");
+    pPause.classList.add("bi-play-fill");
     song.pause();
     playing = true;
   }
+}
+/** function that puts in the next or previous track */
+function prevnextTitles(param) {
+  let title = tracks.filter((track) => track.preview === song.src)[0];
+  let trackIndex = tracks.indexOf(title) + param;
+  let track = tracks[trackIndex];
+  console.log("nexttrack", track);
+  song.src = tracks[trackIndex].preview;
+  song.play();
+  pPause.classList.remove("bi-play-fill");
+  pPause.classList.add("bi-pause-fill");
+  playing = false;
+  console.log(track);
+  playerSong.childNodes[0].data = "\n" + track.title;
+  playerArtist.innerHTML = track.artist.name;
+  playerArtistImage.src = track.album.cover;
 }
 //fills the page with content
 getAlbums(artist);
