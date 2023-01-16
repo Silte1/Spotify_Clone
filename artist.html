@@ -138,15 +138,16 @@
         </div>
       </div>
       <div class="master_play">
+        <audio src="" id="song"></audio>
         <div class="wave">
           <div class="wave1"></div>
           <div class="wave1"></div>
           <div class="wave1"></div>
         </div>
         <img src="../picAsset/on my.jpg" alt="Alan" />
-        <h5>
+        <h5 id="player-song-name">
           On My Way <br />
-          <div class="subtitle">Alan Walker</div>
+          <div class="subtitle" id="player-artist-name">Alan Walker</div>
           <div>
             <a href="#"
               ><i
@@ -160,7 +161,7 @@
         </h5>
         <div class="icon">
           <i class="bi bi-skip-start-fill"></i>
-          <i class="bi bi-play-fill"></i>
+          <i class="bi bi-play-fill" id="pPause"></i>
           <i class="bi bi-skip-end-fill"></i>
         </div>
         <span id="currentStart">0:00</span>

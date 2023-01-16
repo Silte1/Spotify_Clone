@@ -13,6 +13,15 @@ const artistAbout = document.getElementById("artist-about");
 
 const artistBottom = document.getElementById("artist-bottom");
 const artistAlbumsContent = document.getElementById("artist-albums-content");
+
+// Audio player variables
+const progressBar = document.getElementById("seek");
+const song = document.getElementById("song");
+const playerSong = document.getElementById("player-song-name");
+const playerArtist = document.getElementById("player-artist-name");
+const pPause = document.getElementById("pPause");
+
+//for fetching
 const options = {
   method: "GET",
   headers: {
@@ -22,7 +31,7 @@ const options = {
 };
 
 // use the artist variable to change the artists page
-const artist = "ksbloom";
+const artist = "beyonce";
 
 //::::::::::::::::: Functions
 
@@ -56,7 +65,7 @@ async function getAlbums(artist) {
 
     // enters artist Name and picture in the artist top page
     artistName.innerText = artist.toUpperCase();
-    artistTop.style.background = `url(${data.data[0].artist.picture_xl}) top / cover no-repeat`;
+    artistTop.style.background = `url(${data.data[0].artist.picture_xl}) center / cover no-repeat`;
 
     // loops over tracks of the artist and displays their information in the "albums-content" element
     data.data.map((track) => {
@@ -76,8 +85,14 @@ async function getAlbums(artist) {
 
       card.append(image, title, artistName);
       artistAlbumsContent.append(card);
-      // // Eventlistener to play a song in player
-      // card.addEventListener("click", (e) => {});
+      // Eventlistener to play a song in player
+      card.addEventListener("click", (e) => {
+        song.src = track.preview;
+        song.play();
+        console.log(playerSong);
+        playerSong.childNodes[0].data = "\n" + track.title;
+        playerArtist.innerHTML = track.artist.name;
+      });
     });
 
     // Eventlistener on "play" : plays the preview of one of the first 25 songs
@@ -189,5 +204,51 @@ const swiper = new Swiper(".swiper", {
   },
 });
 
+//::::::::::::::::  AUDIO PLAYER
+setInterval(updateProgressValue, 500);
+
+function changeProgressBar() {
+  song.currentTime = progressBar.value;
+}
+function updateProgressValue() {
+  progressBar.max = song.duration;
+  progressBar.value = song.currentTime;
+  document.querySelector("#currentStart").innerHTML = formatTime(
+    Math.floor(song.currentTime)
+  );
+  if (document.querySelector("#currentEnd").innerHTML === "NaN:NaN") {
+    document.querySelector("#currentEnd").innerHTML = "0:00";
+  } else {
+    document.querySelector("#currentEnd").innerHTML = formatTime(
+      Math.floor(song.duration)
+    );
+  }
+}
+
+function formatTime(seconds) {
+  let min = Math.floor(seconds / 60);
+  let sec = Math.floor(seconds - min * 60);
+  if (sec < 10) {
+    sec = `0${sec}`;
+  }
+  return `${min}:${sec}`;
+}
+
+pPause.addEventListener("click", playPause());
+
+let playing = true;
+
+function playPause() {
+  if (playing) {
+    pPause.src = "../icons/pause.png";
+
+    song.play();
+    playing = false;
+  } else {
+    pPause.src = "../icons/play.png";
+    song.pause();
+    playing = true;
+  }
+}
 //fills the page with content
 getAlbums(artist);
