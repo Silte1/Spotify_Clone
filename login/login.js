@@ -28,7 +28,7 @@ loginBtn.onclick = (e) => {
   if (loginSuccess.length === 1) {
     console.log(`willkommen ${user}`);
     // proceed to next page
-    window.location.href = "./artist.html";
+    window.location.href = "../home-page/home.html";
   } else {
     alert("login failed");
   }

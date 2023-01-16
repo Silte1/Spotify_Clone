@@ -97,7 +97,33 @@ throwbackAlbumIds.forEach(async (element) => {
   }
 });
 
+async function randomSong() {
+  try {
+    // data needs to be defined before the do while loop or else the loop does not work
+    let data;
+    let random = Math.floor(Math.random() * throwbackAlbumIds.length);
+    let trackIndex = random;
+    let element = throwbackAlbumIds[trackIndex];
+
+    // repeats fetching, until data.title is NOT undefined
+    do {
+      data = await fillSwiper(element);
+    } while (!data.title);
+    // to load a random song in the player at login
+    console.log(data);
+    song.src = data.tracks.data[0].preview;
+
+    playerSong.childNodes[0].data = "\n" + data.tracks.data[0].title;
+    playerArtist.innerHTML = data.tracks.data[0].artist.name;
+    playerArtistImage.src = data.tracks.data[0].album.cover;
+  } catch (error) {
+    console.log(error, error.message);
+  }
+}
+randomSong();
+
 //::::::::::::::::  AUDIO PLAYER
+
 setInterval(updateProgressValue, 500);
 
 function updateProgressValue() {
@@ -139,22 +165,6 @@ function playPause() {
     song.pause();
     playing = true;
   }
-}
-/** function that puts in the next or previous track */
-function prevnextTitles(param) {
-  let title = tracks.filter((track) => track.preview === song.src)[0];
-  let trackIndex = tracks.indexOf(title) + param;
-  let track = tracks[trackIndex];
-  console.log("nexttrack", track);
-  song.src = tracks[trackIndex].preview;
-  song.play();
-  pPause.classList.remove("bi-play-fill");
-  pPause.classList.add("bi-pause-fill");
-  playing = false;
-  console.log(track);
-  playerSong.childNodes[0].data = "\n" + track.title;
-  playerArtist.innerHTML = track.artist.name;
-  playerArtistImage.src = track.album.cover;
 }
 
 // like button

@@ -20,7 +20,25 @@ let playing = true;
 
 // variable to save the tracks
 const tracks = [];
+/** Function to fetch informations on an album */
+async function fillSwiper(param) {
+  try {
+    const response = await fetch(
+      `https://deezerdevs-deezer.p.rapidapi.com/album/${param}`,
+      options
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log("error when fetching artist", error, error.message);
+  }
+}
 
+// Album Ids for Home page
+const throwbackAlbumIds = [
+  340077257, 352669977, 384131297, 6019334, 362299477, 230638702, 95185612,
+  150710522, 15559256, 221439032, 108934,
+];
 // console.log("hier", tractSection.innerHTML == "");
 
 // sage
@@ -217,7 +235,31 @@ $(".love").click(function () {
       next();
     });
 });
+/**provides a random song when first getting to search page */
+async function randomSong() {
+  try {
+    // data needs to be defined before the do while loop or else the loop does not work
+    let data;
+    let random = Math.floor(Math.random() * throwbackAlbumIds.length);
+    let trackIndex = random;
+    let element = throwbackAlbumIds[trackIndex];
 
+    // repeats fetching, until data.title is NOT undefined
+    do {
+      data = await fillSwiper(element);
+    } while (!data.title);
+    // to load a random song in the player at login
+    console.log(data);
+    song.src = data.tracks.data[0].preview;
+
+    playerSong.childNodes[0].data = "\n" + data.tracks.data[0].title;
+    playerArtist.innerHTML = data.tracks.data[0].artist.name;
+    playerArtistImage.src = data.tracks.data[0].album.cover;
+  } catch (error) {
+    console.log(error, error.message);
+  }
+}
+randomSong();
 // :::::::::::::: Nav Functions
 
 sideNav.addEventListener("click", (e) => {

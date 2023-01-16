@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Raleway:wght@100;200&family=Roboto&family=Work+Sans&display=swap');
+
+:root{
+    background-color: white;
+    color: black;
+}
+
+body{
+    font-family:"roboto", sans-serif;
+    max-width: 100%;
+    max-height: 100vh;
+    box-sizing: border-box;
+}
+
+.head-style{
+    display: grid;
+    place-items: center;
+    border: 1px;
+    border-bottom-style: solid;
+    border-color: #e2e8f0;
+}
+
+.img{
+    width: 200px;
+    height: 85px;
+}
+
+.center{
+    display: grid;
+    place-items: center;
+    
+}
+
+.center .cont{
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+a{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    border-color: #cbd5e0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 12px;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    width: 450px;
+    color: #757070;
+}
+
+.a2{
+    display: grid;
+    place-items: center;
+    
+    
+  
+}
+
+a:nth-child(2) {
+    background-color: rgb(59, 89, 152);
+    color: white;
+}
+a:nth-child(3){
+    background-color: black;
+    color: white;
+}
+
+.input-grid{
+    display: grid;
+    
+}
+
+.h2{
+    font-size: 15px;
+    display: inline-block;
+}
+.hr1{
+    width: 209px;
+  display: inline-block;
+}
+.div-hr1{
+    display: flex;
+  align-items: center;
+}
+
+.form-down{
+    text-align: center;
+    color: rgb(14, 153, 85);;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    
+    
+}
+input{
+    padding: 15px;
+    width: 450px;
+    border: 1px;
+    border-style: solid;
+    border-color: #e2e8f0;
+    font-weight: bold;
+}
+
+
+
+/* .div-checkbox{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+} */
+.input:nth-child(1){
+    margin-bottom: 15px;
+}
+::placeholder { 
+    color: lightgray;
+    font-size: 16px; 
+    
+  }
+
+button{
+    position: absolute;
+    width: 200px;
+    font-size: 15px;
+    border-color: #cbd5e0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    text-decoration: none;
+    left: 52.8%;
+    padding: 12px;
+    background-color: rgb(14, 153, 85);
+    color: white;
+    font-weight: bold;
+
+}
+
+hr{
+    width: 470px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .fa-brands{
+    margin-right: 10px;
+  }
+  .hr1{
+    margin: 20px;
+  }
+
+#vehicle3{
+position: absolute;
+right: 49.8%;
+/* margin-top: 47%; */
+height: 20px;
+margin-top: 13px;
+
+
+
+
+
+
+}
+.label{
+    margin-left: 33px;
+    position: absolute;
+    color: grey;
+    margin-top: 15px;
+}
+  
+
+.footer{
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-size: 10px;
+    color: lightgray;
+}
+.strong{
+    color: rgb(14, 153, 85)
+}
+
