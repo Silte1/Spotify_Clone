@@ -7,6 +7,7 @@
 body {
   background: black;
   display: flex;
+  overflow-x: hidden;
 
   #aside {
     width: 15%;
@@ -44,6 +45,9 @@ li {
   width: 80%;
   // needed for player
   .master_play {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     display: flex;
     align-items: center;
     padding: 0px 20px;
@@ -64,6 +68,29 @@ li {
       .subtitle {
         font-size: 11px;
         color: #4c5262;
+      }
+      /* hart and likepost */
+      .likepost {
+        position: absolute;
+        color: rgb(242, 245, 235);
+        left: -135%;
+        top: 66%;
+        font-size: 30px;
+      }
+
+      .heart:before {
+        top: -4.5vh;
+        left: 0;
+      }
+
+      .heart:after {
+        top: 0;
+        left: 4.5vh;
+      }
+
+      .heart.love:before,
+      .heart.love:after {
+        color: #f80808;
       }
     }
     .icon {

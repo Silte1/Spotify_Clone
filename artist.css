@@ -9,6 +9,7 @@
 body {
   background: black;
   display: flex;
+  overflow-x: hidden;
 }
 body #aside {
   width: 15%;
@@ -45,6 +46,9 @@ li {
   width: 80%;
 }
 #artist-wrapper .master_play {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   display: flex;
   align-items: center;
   padding: 0px 20px;
@@ -63,10 +67,30 @@ li {
   margin-left: 15px;
   color: #fff;
   line-height: 15px;
+  /* hart and likepost */
 }
 #artist-wrapper .master_play h5 .subtitle {
   font-size: 11px;
   color: #4c5262;
+}
+#artist-wrapper .master_play h5 .likepost {
+  position: absolute;
+  color: rgb(242, 245, 235);
+  left: -135%;
+  top: 66%;
+  font-size: 30px;
+}
+#artist-wrapper .master_play h5 .heart:before {
+  top: -4.5vh;
+  left: 0;
+}
+#artist-wrapper .master_play h5 .heart:after {
+  top: 0;
+  left: 4.5vh;
+}
+#artist-wrapper .master_play h5 .heart.love:before,
+#artist-wrapper .master_play h5 .heart.love:after {
+  color: #f80808;
 }
 #artist-wrapper .master_play .icon {
   font-size: 20px;

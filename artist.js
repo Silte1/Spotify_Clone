@@ -76,6 +76,8 @@ async function getAlbums(artist) {
 
       card.append(image, title, artistName);
       artistAlbumsContent.append(card);
+      // // Eventlistener to play a song in player
+      // card.addEventListener("click", (e) => {});
     });
 
     // Eventlistener on "play" : plays the preview of one of the first 25 songs
