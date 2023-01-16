@@ -41,10 +41,10 @@ const options = {
 const tracks = [];
 
 // use the artist variable to change the artists page
-const artist = "beyonce";
+const artist = localStorage.getItem("artistVariable");
 
 //::::::::::::::::: Functions
-
+console.log(artist);
 /** creates a message that artist has been added to "follow" list. STILL NEEDS TO ADD ARTIST TO SAID LIST */
 function followArtist() {
   artistAddMessage.style.display = "block";
@@ -155,77 +155,6 @@ artistOverview.addEventListener("click", (e) => {
   getAlbums(artist);
 });
 
-// :::::::::::::: H O M E P A G E Functions
-
-//::::::::::::  Variables
-// swiper for home page
-const swiperWrapper = document.getElementsByClassName("swiper-wrapper")[0];
-
-// Album Ids for Home page
-const throwbackAlbumIds = [
-  340077257, 352669977, 384131297, 6019334, 362299477, 230638702, 95185612,
-  150710522, 15559256, 221439032, 108934,
-];
-const topFortyId = [9574940];
-
-/** Function to fetch informations on an album */
-async function fillSwiper(param) {
-  try {
-    const response = await fetch(
-      `https://deezerdevs-deezer.p.rapidapi.com/album/${param}`,
-      options
-    );
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log("error when fetching artist", error, error.message);
-  }
-}
-
-// this loop fills the "throwback" Element on homepage with albums
-throwbackAlbumIds.forEach(async (element) => {
-  try {
-    // data needs to be defined before the do while loop or else the loop does not work
-    let data;
-
-    // repeats fetching, until data.title is NOT undefined
-    do {
-      data = await fillSwiper(element);
-    } while (!data.title);
-
-    //creates the HTML Elements for the album
-    const card = document.createElement("div");
-    const image = document.createElement("img");
-    const title = document.createElement("p");
-    card.classList.add("swiper-slide");
-
-    // fills the HTML elements with content for the album
-    image.src = `${data.cover_medium}`;
-    title.innerText = data.title.toUpperCase();
-
-    card.append(image, title);
-    swiperWrapper.append(card);
-  } catch (error) {
-    console.log("error when fetching album", error, error.message);
-  }
-});
-
-//:::::::::::::::: S W I P E R for home page (swiperjs)
-
-const swiper = new Swiper(".swiper", {
-  // Optional parameters
-  slidesPerView: 5,
-  spaceBetween: 10,
-  speed: 400,
-  loop: true,
-
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
-
 //::::::::::::::::  AUDIO PLAYER
 setInterval(updateProgressValue, 500);
 
@@ -302,6 +231,7 @@ $(".love").click(function () {
 
 sideNav.addEventListener("click", (e) => {
   console.log(e.target);
+  window.location.href = "home-page/home.html";
 });
 
 //fills the page with content

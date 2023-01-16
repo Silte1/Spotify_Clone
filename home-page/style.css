@@ -1,0 +1,253 @@
+header {
+  width: 85%;
+  height: 95%;
+  border: 1px solid #ffff;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  color: #ffff;
+}
+
+header .menu_side,
+.song_side {
+  background-color: #111727;
+  box-shadow: 5px 0px 2px #090f1f;
+  width: 100%;
+  background: #0b1320;
+}
+
+/* body structure is ended */
+
+/* left section  and menu side */
+header header .menu_side h1 {
+  font-size: 20px;
+  margin: 15px 0px 0px 20px;
+  font-weight: 500;
+  color: #ffff;
+}
+
+header .menu_side .playlist {
+  margin: 40px 0px 0px 20px;
+}
+
+header .menu_side .playlist h4 {
+  font-size: 14px;
+  font-weight: 400;
+  padding-bottom: 10px;
+  color: #4c5262;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: 0.3s linear;
+}
+
+header .menu_side .playlist h4:hover {
+  color: #fff;
+}
+
+header .menu_side .playlist h4 span {
+  position: relative;
+  margin-right: 35px;
+}
+
+header .menu_side .playlist h4 span::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border: 2px solid #4c5262;
+  border-radius: 50%;
+  top: -4px;
+  transition: 0.3s linear;
+}
+
+/* main box or side- song  is started */
+.container {
+  background: linear-gradient(
+    rgba(4, 42, 122, 0.9),
+    rgba(3, 40, 122, 0.9),
+    rgba(3, 23, 116, 0.9),
+    rgba(1, 12, 61, 0.9)
+  );
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.navbarbox {
+  margin-top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item {
+  margin: 15px;
+  color: #fff;
+}
+
+.main-top {
+  /* border: 2px solid #fff; */
+  width: 100%;
+  height: 35%;
+  position: relative;
+  margin-top: 5px;
+}
+
+.main-bottom {
+  /* border: 2px solid #fff; */
+  width: 100%;
+  height: 25%;
+  position: relative;
+  margin-top: 5rem;
+}
+
+header .song_side {
+  z-index: 2;
+}
+
+header .song_side::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  background-position-x: right;
+  z-index: 1;
+}
+
+header .song_side nav {
+  width: 90%;
+  height: 10%;
+  margin: auto;
+  /* border: 1px solid #ffff; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .song_side nav ul {
+  display: flex;
+}
+
+header .song_side nav ul li {
+  position: relative;
+  list-style-type: none;
+  font-size: 13px;
+  color: #4c5262;
+  margin-right: 25px;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+header .song_side nav ul li:hover {
+  color: #fff;
+}
+
+header .song_side nav ul li:nth-child(1) {
+  color: #fff;
+}
+
+header .song_side nav ul li span {
+  position: absolute;
+  width: 100%;
+  height: 2.5px;
+  background: #36e2ec;
+  bottom: -5px;
+  left: 0;
+  border-radius: 20px;
+}
+
+header .song_side nav .search {
+  position: relative;
+  width: 40%;
+  padding: 1px 10px;
+  border-radius: 20px;
+  color: gray;
+}
+
+header .song_side nav .search::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: rgba(184, 184, 184, 0.1);
+  backdrop-filter: blur(5px);
+  z-index: -2;
+}
+
+header .song_side nav .search .bi {
+  font-size: 13px;
+  padding: 3px 0 0 10px;
+}
+
+header .song_side nav .search input {
+  background: none;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+  color: #fff;
+  font-size: 12px;
+}
+
+header .song_side nav .user {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+header .song_side nav .user img {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 8px #131312;
+}
+
+header .song_side .content {
+  width: 90%;
+  height: 15%;
+  margin: auto;
+  /* border: 1px solid #fff; */
+  padding-top: 20px;
+}
+
+/* main box is eded */
+
+/* hart and likepost  is started */
+.love {
+  margin-left: 85px;
+}
+
+.likepost {
+  /* position: relative; */
+  color: rgb(242, 245, 235);
+  font-size: 30px;
+  margin-left: 15px;
+}
+
+.heart:before {
+  left: 0;
+}
+
+.heart:after {
+  top: 0;
+}
+
+.heart.love:before,
+.heart.love:after {
+  color: #f80808;
+}
+
+.pic-in-pic {
+  position: absolute;
+  color: rgb(242, 245, 235);
+  left: 21%;
+  bottom: 45px;
+  font-size: 30px;
+}
