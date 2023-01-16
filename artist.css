@@ -1,10 +1,16 @@
 body {
   background: black;
+  display: flex;
+  flex-direction: row;
 }
 
 button,
 li {
   font-size: 0.8rem;
+}
+
+#artist-wrapper {
+  width: 80%;
 }
 
 #artist-top #artist-buttons #artist-follow {
@@ -80,4 +86,15 @@ li {
   text-align: center;
   padding: 1rem;
   color: azure;
-}/*# sourceMappingURL=artist.css.map */
+} /*# sourceMappingURL=artist.css.map */
+
+#aside {
+  width: 15%;
+  height: 100%;
+  /* border: 1px solid red; */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 2px 1px white;
+}
