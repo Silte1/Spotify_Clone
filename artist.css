@@ -214,10 +214,6 @@ li {
 #artist-wrapper .master_play .wave .wave1:nth-child(3) {
   height: 8px;
 }
-#artist-wrapper .master_play .bi {
-  display: flex;
-  margin-right: 20px;
-}
 #artist-wrapper .master_play .active2 .wave1 {
   -webkit-animation: wave 0.5s linear infinite;
           animation: wave 0.5s linear infinite;
