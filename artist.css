@@ -86,7 +86,7 @@ li {
 .master_play h5 .likepost {
   color: rgb(242, 245, 235);
   font-size: 30px;
-  margin-left: 15px;
+  margin-left: 50px;
 }
 .master_play h5 .heart:before {
   top: -4.5vh;

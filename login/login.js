@@ -19,6 +19,7 @@ const users = [
 ];
 
 loginBtn.onclick = (e) => {
+  e.preventDefault();
   let user = userNameInput.value.toLowerCase().trim();
   let password = passwordInput.value.toLowerCase().trim();
 
@@ -26,7 +27,6 @@ loginBtn.onclick = (e) => {
     (person) => person.userName === user && person.password === password
   );
   if (loginSuccess.length === 1) {
-    console.log(`willkommen ${user}`);
     // proceed to next page
     window.location.href = "../home-page/home.html";
   } else {
